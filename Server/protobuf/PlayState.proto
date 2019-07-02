@@ -1,0 +1,49 @@
+syntax = "proto3";
+package state;
+
+option csharp_namespace = "Google.Protobuf.State";
+
+message Vector3Proto {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+}
+
+message TransformProto {
+    Vector3Proto position = 1;
+    Vector3Proto rotation = 2;
+    Vector3Proto scale = 3;
+}
+
+message PlayState {
+    TransformProto transform = 1;
+    int32 animState = 2;
+    int32 health = 3;
+    int32 killCount = 4;
+    int32 deathCount = 5;
+    int32 roomId = 6;
+    string clntName = 7;
+}
+
+message HitState {
+    string from = 1;
+    string to = 2;
+    int32 damage = 3;
+}
+
+message WorldState {
+    int32 roomId = 1;
+    string clntName = 2;
+
+    TransformProto transform = 3;
+    bool fired = 4;
+
+    int32 health = 5;
+    bool hit = 6;
+    HitState hitState = 7;
+
+    int32 killPoint = 8;
+    int32 deathPoint = 9;
+
+    int32 animState = 10;
+}

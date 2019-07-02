@@ -1,0 +1,27 @@
+syntax = "proto3";
+package packet;
+
+option csharp_namespace = "Google.Protobuf.Packet.Room";
+
+message Client {
+	int32 clntId = 1;
+	string name = 2;
+	int32 position = 3;
+	bool ready = 4;
+}
+
+message RoomInfo {
+	int32 roomId = 1;
+	string name = 2;
+	int32 limit = 3;
+	int32 current = 4;
+	repeated Client redTeam = 5;
+	repeated Client blueTeam = 6;
+	
+	int32 readyCount = 7;
+	int32 host = 8;
+}
+
+message RoomList {
+	map<int32, RoomInfo> rooms = 1;
+}
